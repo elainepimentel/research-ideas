@@ -1,0 +1,383 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage{paralist}
+\usepackage{longtable}
+\usepackage{tikz}
+\usepackage{pgfgantt}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{eurosym}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{calc}
+\usepackage[hide]{ed}
+\usepackage{proof}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{wrapfig}
+\usepackage{latexsym}
+\usepackage{scrextend}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+\usepackage{pdfpages}
+\usepackage[applemac]{inputenc}
+
+\usepackage[titletoc]{appendix}
+
+%%MACROS
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\etal}{\emph{et al.}}
+\newcommand{\forallLoc}{{\Cap}}
+\newcommand{\existsLoc}{\Cup}
+\newcommand\sellU{\ensuremath{\textsf{SELL}^\forallLoc}\xspace}
+\newcommand\sell{\ensuremath{\textsf{SELL}}\xspace}
+\newcommand\LL{\ensuremath{\textsf{LL}}\xspace}
+\newcommand{\zr}{nil}
+\newcommand{\K}{\mathsf{K}}
+\newcommand{\E}{\mathsf{E}}
+\newcommand{\axC}{\mathsf{C}}
+\newcommand{\axM}{\mathsf{M}}
+\newcommand{\axN}{\mathsf{N}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\seq}{\vdash}
+\newcommand{\lab}{\!:\!}
+\newcommand\eg{\hbox{\textit{e.g.}}}
+\newcommand\ie{\hbox{\textit{i.e.}}}
+
+%% bibliography / citing
+%% introduces toggle bibtype to choose biblatex or natbib
+%\newtoggle{bibtype}
+%\toggletrue{bibtype}%% for biblatex. set \togglefalse{bibtype} for natbib.
+%\iftoggle{bibtype}{%
+%\usepackage[style=verbose-note,url=false,date=year,isbn=false,doi=false,firstinits,maxcitenames=2,backend=bibtex]{biblatex}
+%}{%
+%\usepackage{natbib}
+%\usepackage{bibentry}
+%}
+
+%% set margins etc.
+\usepackage[a4paper,margin=1.5cm,includehead,includefoot]{geometry}
+% \usepackage{setspace}
+%% margins with geometry:
+\setlength{\headheight}{15.2pt}
+
+\renewcommand{\footnotesize}{\scriptsize}
+
+\newtheorem*{question*}{Future work}
+\newtheorem*{pub*}{Main publications}
+%\makeatletter
+%
+%\DeclareCiteCommand{\myfootcite}
+%  {}
+%  {\usebibmacro{citeindex}%
+%   \usebibmacro{myfootcite}}
+%  {}
+%  {}
+%
+%\newbibmacro*{myfootcite}{%
+%  \ifciteseen
+%    {\usebibmacro{myfootcite:note}}
+%    {\mkbibfootnote{\usebibmacro{footcite:full}%
+%     \usebibmacro{footcite:save}}}}
+%
+%\newbibmacro*{myfootcite:note}{\footref{cbx@\csuse{cbx@f@\thefield{entrykey}}}}
+%\makeatother
+
+
+
+
+%% margins with setspace:
+% \voffset=-2.5cm
+% %\hoffset=-0.5cm
+% \textheight=24cm
+% %\textwidth=17cm
+% \headheight=14pt
+% \textwidth=16cm
+% \oddsidemargin=0pt
+% \evensidemargin=0pt
+
+%% Title and Endpage
+
+%\newcommand{\Acronym}{PROSA}
+\newcommand{\boundarypage}[1]{ %\thispagestyle{empty}
+\begin{center}
+\strut\\\vspace{1cm}
+\LARGE
+\textbf{#1}\\
+\vspace{3cm}
+Some ideas for research directions\\
+\vspace{1cm}
+\textbf{ELAINE PIMENTEL}\\
+\vspace{3cm}
+%``\Acronym''\\
+\vspace{3cm}
+\end{center}
+
+}
+
+\hypersetup{
+    pdftitle={
+    %\Acronym{}, 
+    Dossier},    % title
+    pdfauthor={Elaine Pimentel},
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+  }
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[EOC]{Research -- Elaine Pimentel}
+\fancyfoot[EOC]{Page \thepage\ of \pageref{LastPage}}
+%\usepackage{mycommands}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography management: biblatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\iftoggle{bibtype}{%
+%\addbibresource{biblio.bib}
+%\AtEveryCitekey{ % for verbose citations in footnote; for bibliography
+%                           %  use \AtEveryBibitem
+%  \clearname{editor} % hide editors
+%  \clearfield{series} % hide series
+%%  \clearfield{volume} % hide volume
+%}
+%\DeclareFieldFormat[article,incollection,unpublished,conference,inproceedings,thesis]{title}{#1}% no quotes in bibliography
+%\DeclareFieldFormat[article,incollection,unpublished,conference,inproceedings,thesis]{citetitle}{#1}% no quotes in in-text citations
+%\renewbibmacro{in:}{%
+%  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}} % delete "In:" from @article
+%}{%
+%%% without biblatex:
+%%\newcommand{\footcite}[1]{\footnote{\bibentry{#1}}}
+%\bibliography{research}
+%\bibliographystyle{plain}
+%}
+
+% newganttlinktype{rdldr*}{%
+%   draw [/pgfgantt/link]
+%     (xLeft, yUpper) --
+%     (xLeft + ganttvalueof{link bulge 1} * ganttvalueof{x unit},
+%       yUpper) --
+%     ($(xLeft + ganttvalueof{link bulge 1} * ganttvalueof{x unit},
+%       yUpper)!%
+%       ganttvalueof{link mid}!%
+%       (xLeft + ganttvalueof{link bulge 1} * ganttvalueof{x unit},
+%       yLower)$) --
+%     ($(xRight - ganttvalueof{link bulge 2} * ganttvalueof{x unit},
+%       yUpper)!%
+%       ganttvalueof{link mid}!%
+%       (xRight - ganttvalueof{link bulge 2} * ganttvalueof{x unit},
+%       yLower)$) --
+%     (xRight - ganttvalueof{link bulge 2} * ganttvalueof{x unit},
+%       yLower) --
+%     (xRight, yLower);%
+% }
+% ganttset{
+%   link bulge 1/.link=/pgfgantt/link bulge,
+%   link bulge 2/.link=/pgfgantt/link bulge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\boundarypage{ }
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+
+\newcounter{mainpart}
+\newcounter{mainpartbegin}
+\setcounter{mainpartbegin}{\thepage}
+\addtocounter{mainpartbegin}{-1}
+\fancyfoot[C]{Page \thepage~of \pageref{LastPage}. 
+\setcounter{mainpart}{\value{page}-\value{mainpartbegin}}}%
+
+
+
+
+\section{Panorama}
+For proving a theorem having  hypothesis $A$ and conclusion $B$, we can present a {\em direct proof} that $B$ follows from $A$, or show it by {\em contraposition} (assume 
+$\neg B$ and prove 
+$\neg A$) or yet prove it by {\em contradiction} (assume $A$ and 
+$\neg B$ and show that this leads to a contradiction). The reason that all such proof methods work is that, in {\bf classical logic} (the logical language used in mathematics), the {\em principle of the excluded middle} (for any proposition $P$, either $P$ or $\neg P$ is true) is a tautology. 
+Proof theoretically speaking, the lack of the excluded middle's principle implies that theorems should be proved using only  direct proofs, that is, proofs should be {\em constructed}. The corresponding logic is {\bf intuitionistic logic}.
+
+If other features inherent to classical logic are changed, different logics arise.  Consider for instance the structural rules of classical/intuitionistic logic that allow for {\em copying} or  {\em removing} formulas or yet {\em exchanging} their order.
+Taking some or all of these from premises of logical arguments results in {\bf substructural logics}, where often formulas can be seen as resources. 
+These logics (such as {\bf linear logic}) find various applications, e.g. in computer science, 
+since the notion of {\em state transitions} can be adequately specified.
+
+Another way of varying classical reasoning is by enhancing the notion of {\em truth}.
+For this, we need to extend classical logic with {\em modals}. A modal is an expression (like {\em necessarily} or {\em possibly}) that is used to qualify the truth of a judgement, e.g., $\Box A$ 
+can be read as ``the formula $A$ is necessarily true''. The study of modalities is of particular interest since it has found deep applications in Philosophy, Mathematics and Computer Science.
+In Computer Science, for example, modal logics (PDF, LTL, etc) have given rise to specification languages and decision procedures for the verification of programs and systems.
+
+The most familiar modal logics are constructed from a 
+weak 
+logic called $\K$, and extensions of $\K$ are called {\bf normal modal logics}. 
+One common interpretation of the box modality in such logics is {\em modalities-as-knowledge}, where $\Box A$ means ``the agent knows that $A$ is true''. Under this interpretation, extensions of $\K$ 
+are used for adding certain properties to knowledge, like transitivity.
+However, assuming $\K$ leads to {\em logical omniscience}, a mostly undesirable property since it implies that an agent knows all the logical consequences of what she knows. 
+One way of avoiding this is by interpreting knowledge in logics weaker than $\K$. Such logics 
+are called {\bf non-normal modal logics}.
+
+
+
+One of the most beautiful  results concerning logical systems is that in both, intuitionistic logic and classical normal modal logics, provability in logic can be seen as validity in  mathematical structures called {\em Kripke frames}. Hence one can relate objects from {\bf proof theory} (having {\em proofs} as formal mathematical objects) to a semantical counterpart in {\bf  model theory} (having as objects {\em mathematical structures} that interpret sets of sentences in a formal language). 
+These results can often be extended to normal {\bf multi-modal logics}, where instead of having one modality one may have as many as wanted/needed.
+
+Unfortunately, Kripke semantics is not an adequate model for many non-normal modal logics and/or modal systems over substructural logics.
+Moreover, 
+such logics lack a general unified semantics, hence a similar proof theory/model theory result like the one mentioned above does not exist. 
+There are some successful semantical models in the case of  (classical) non-normal modal logics,  among them the so called {\em neighbourhood semantics}. One of the good properties of this approach is that it smoothly extends the concept of Kripke frames, in the sense that {\em accessibility relations} are substituted by a family of {\em neighbourhoods}, the name being inspired by topological spaces. However, the success of this semantic method has not been matched yet by a satisfactory syntactical counterpart, in the sense that there exist few proposals of calculi  ({\bf proof systems}) 
+in non-normal modal logics. 
+
+On the other hand, by promoting a dynamic and interactive view on proofs and programs, {\bf game semantics} has modified the understanding of both logical systems and programming languages. The semantic analysis has revealed that formulas and types describe {\em games}, and that proofs and programs describe {\em strategies}. 
+This dynamism can, itself, give rise to new logical systems, with interesting proof theoretical properties.
+
+Apart from formalising reasoning, proof systems are important tools for analysing structural properties of proofs, as well as 
+their computational and meta-logical consequences.
+In particular, one of the main subjects of interest in proof theory is to determine when
+a proof system supports a notion of analytic proof. {\bf Analytic calculi} consist solely of rules that compose the formulas to be proved in a stepwise manner. As a result, proofs from an analytic calculus possess the subformula property: every formula that appears 
+(anywhere) 
+in the proof must be a subformula of the formulas to be proved. This is a powerful restriction on the form of the proofs and can be exploited to prove important meta-logical properties of the formalized logics such as consistency, decidability and interpolation. 
+
+Since analyticity is a highly non-trivial 
+property, it is natural to ask (i) how to construct an analytic calculus for a logic of interest; and (ii) given a pre-existing proof system for a certain logic, how can we determine if it is analytic.
+Regarding (i), the best known formalism for proposing analytic proof systems 
+is Gentzen's  {\em sequent calculus}.
+While its simplicity makes it an ideal tool for proving meta-logical properties, sequent calculus is
+not expressive enough for constructing analytic  calculi for logics of interest. As a result, many new formalisms have been proposed over the last 30 years, including  {\em hypersequent calculi}, {\em nested calculi} and  {\em labeled calculi}. While such more expressive formalisms enable calculi for a broader class of logics, the greater bureaucracy makes it harder to prove meta-logical properties, such as analyticity itself. Hence the importance of answering (ii). Since a
+specific 
+%modal and/or substructural 
+logic gives rise to specific sets of rules in different calculi, it is important to determine  whether there is a {\em general} methodology for determining/analysing such meta-level properties. This is the role of {\bf logical frameworks} in proof theory, where
+proof systems are 
+adequately embedded
+into a meta-level formal system so that object-level properties can be uniformly proven.
+Since logical frameworks often come with automated procedures, the meta-level machinery can be used for proving properties  of the embedded systems {\em automatically}.
+
+Finally, despite of being a powerful property, analyticity alone is not enough for guaranteeing that the search for proofs is {\em optimal}, in the sense that it matches the computational complexity of the validity problem in the logic.
+For that, {\bf proof search strategies} are necessary. 
+Such strategies often enable the development of
+{\bf automated reasoning methods} and efficient theorem provers. 
+
+
+The present draft is inserted in this general {\em panorama}. The goal is to
+bring ideas on how to improve the state of the art of proof theory for logics that are variants and generalizations of modal and substructural logics. 
+
+ 
+\section{Research ideas} 
+
+\subsection{Non normal classical modalities} 
+Non-normal modal logics--NNMLs for short--have a long history, going back to the seminal works by Kripke, Montague, Segeberg, Scott, and Chellas (see 
+\cite{Chellas:1980fk} for an introduction). They are ``non-normal'' as they do not contain all axioms of minimal \emph{normal} modal logic  $\K$. 
+
+In this work, we consider  the {\em classical cube} on NMMLs, given by the extensions of the  minimal modal logic $\E$, containing only the {\em congruence rule}, 
+with axioms $\axC, \axM$ and $\axN$.
+
+
+NNMLs have a well-understood semantics defined in terms of
+neighbourhood models \cite{Pacuit:2017}: in these models  each world $w$ has an
+associated set of neighbourhoods $\N(w)$, each one of them being a set
+of worlds/states.  If we accept the traditional interpretation of a ``proposition'' as a set of worlds, we can think of  each neighbourhood  in $\N(w)$ as a proposition: a formula
+$\Box A$ is true in a world $w$ if ``the proposition'' $A$, \ie\ the truth-set of $A$, belongs to
+$\N(w)$.  The classical cube can be modelled by imposing additional closure properties of the set of neighbourhoods.  
+
+%In~\cite{DBLP:conf/lfcs/DalmonteLOP20,DBLP:journals/logcom/DalmonteLOP21} we adopted a variant of neighbourhood semantics defined in terms of bi-neighbourhood models: in these structures each world has associated a set of \emph{pairs} of neighbourhoods. The intuition is that the two components of a pair provide positive and negative support for a modal formula, being more natural for ``non-monotonic'' logics (\ie\ not containing axiom \axM). The reason is that, instead of specifying exactly the truth sets in $\N(w)$, the pairs of neighbourhoods specify just lower and  upper bounds of truth sets, so that the same pair may be a ``witness'' for several propositions.  This makes the generation of \emph{countermodels} easier.
+
+It is curious to note that, although some proof-systems for NNMLs have been proposed in the past, countermodel extraction has been rarely addressed and complexity is seldom analysed. We filled this gap in~\cite{DBLP:journals/logcom/DalmonteLOP21} by
+proposing \emph{modular} 
+calculi for the classical cube (and also some deontic extensions)  that provide  {\em direct countermodel extraction} 
+and are of {\em optimal complexity}.  
+
+{\bf Future Work.} Stablish a semantic analysis of NNMLs using the so called RNMatrices.
+
+\subsection{Linear modalities} 
+Nested systems are {\em local} and {\em modular}, in the sense that different logical systems can be obtained by smoothly  extending a base set of rules.
+This allowed for the systematic introduction of different modal behaviors to different  base logics, e.g.
+normal modalities (in special those in the  so called $\mathsf{S5}$ cube)  to classical and intuitionistic logics~\cite{DBLP:conf/rta/ChaudhuriMS16}, as well as
+normal multi-modalities and non-normal modalities to classical logic~\cite{DBLP:journals/tocl/LellmannP19}. 
+Changing the base logic from classical/intuitionistic to the substructural case is a challenge,
+since the lack of structural rules affects both the cut-elimination process and the semantical interpretation of the logic~\cite{DBLP:conf/lics/CiabattoniGT08}. Guerrini et al. were pioneers on the study of linear logic with modalities, and we extended their work  for exploring normal (multi)modalities in linear logic in~\cite{DBLP:conf/lpar/LellmannOP17}. 
+
+Non-normal modalities (modalities that fail to satisfy some of the principles of the standard modal logic $\K$)  has not been extensively studied in the substructural case. In fact, the only work (that  we are aware of) that addresses the subject is the one by Porello and Troquard~\cite{DBLP:journals/jancl/PorelloT15}, where extensions of variants of linear logic with one minimal non-normal modality are studied. 
+
+Non-normal modal logics  find applications in several areas,  from epistemic to deontic reasoning. They also play a role in multi-agent reasoning and strategic reasoning in games. In fact, many logics of agents {\em are} non-normal and appear in a number of application domains, such as capturing agency and ability: $\Box A$ is read as ``the agent can bring about $A$''~\cite{Elgesem:1997}, that comes along with a game-theoretical interpretation of $\Box A$: ``the agent has a winning strategy to bring about $A$''~\cite{DBLP:journals/logcom/Pauly02}. 
+
+These are all subjects of great interest also in the substructural setting, specially when dealing with multi-modalities. In fact, lifting non-normal modalities from classical  to the resource-conscious multi-modal setting, we can read $!^{i} A$ as ``the agent $i$ can bring about {\em the resource} $A$'' (where $!^{i}$ is a subexponential in linear logic).
+
+{\bf Future work.} To extend and adapt the methods applied for non-normal modalities in the classical case in~\cite{DBLP:journals/tocl/LellmannP19} to the linear nested system for linear logic presented in~\cite{DBLP:conf/lpar/LellmannOP17}. 
+
+
+\subsection{Semantics} 
+In~\cite{DBLP:conf/tableaux/LangOPF19} we have introduced a game semantics for fragments of (affine intuitionistic) linear logic with subexponentials, culminating in labeled extensions of such systems so that
+$\Gamma \longrightarrow_{b} A$ is interpreted as: ``Resource $A$ can be obtained from the resources $\Gamma$ with a budget $b$''.  For achieving that, we proposed a new interpretation for the {\em dereliction} rule, opposing to the standard controls in the {\em promotion} rule:  derelicting on $!^aB$ means ``paying $a$ to obtain (a copy of) $B$''. Hence our games and systems offer a neater  control of the resources appearing {\em negatively} on sequents. 
+
+{\bf Future work.} 
+This work opened brand new possibilities for analysing the problem of {\em comparing proofs}, and there is much to be done there. First of all,  the quest of extending the cost conscious reasoning to modalities occurring {\em positively} in sequents is not trivial. Despite the obvious game interpretation of promotion that could be given in the style of~\cite{DBLP:conf/tableaux/FermullerL17}, we have showed that this would {\em not} be followed with a proof theoretical notion of cut-elimination, due to the impossibility of defining a functional notion of the cut-label. In order to tackle this problem, we intend to mark cut-formulas with a certain {\em cost memory}, so to be able to keep track of accumulated costs.
+
+Also, we expect that the study of costs of proofs and cut-elimination in labeled calculi may indicate a relationship between labels and bounds of computation~\cite{DBLP:journals/jfp/AccattoliGK20} 
+%
+Moreover, it would be really interesting to study the relationship between budgets and the complexity of cut-elimination process, specially in the multiplicative-(sub)exponential fragment~\cite{DBLP:journals/tcs/Strassburger03,DBLP:journals/tocl/StrassburgerG11}.
+
+Finally, we intend to understand how the dialogue games we have developed relate to the so called {\em concurrent games}, introduced  in~\cite{DBLP:conf/lics/AbramskyM99} and further developed, \eg\  in~\cite{DBLP:conf/lics/FaggianM05,DBLP:journals/lmcs/CastellanCRW17} -- note to self: I think this is impossible!
+
+
+\subsection{Computational interpretation} 
+The process-as-formula interpretation, pioneered by Miller~\cite{DBLP:conf/elp/Miller92}, describes the state of an evolving concurrent system as a linear logic context, where  transitions between process states are modeled as transitions between linear logic contexts. This interpretation has been used extensively in several domains, like programming languages~\cite{DBLP:journals/iandc/CervesatoS09} and process calculi~\cite{DBLP:journals/iandc/FagesRS01}.
+The {\em level of adequacy} of such interpretations measures to what extent logical and computational universes have the same behavior. 
+
+We have observed in~\cite{DBLP:journals/entcs/OlarteP15,DBLP:journals/tcs/OlarteP17} that focusing in linear logic  gives a logical characterisation to a class of concurrent calculi with the highest level of adequacy, where one step of a proof in the logical system correspond to one operational step in the process calculus, and vice-versa. This idea has been extended to the multi-modalities' setting in~\cite{DBLP:conf/concur/NigamOP13,DBLP:journals/entcs/OlarteNP14,DBLP:journals/tplp/PimentelON14,DBLP:journals/tcs/OlartePN15,DBLP:journals/tcs/NigamOP17}, where different subexponential algebraic structures were adequately interpreted as modalities in concurrent calculi. 
+
+On the other hand, in~\cite{DBLP:conf/lpar/LellmannOP17} we have extended the definition of subexponentials so to have other modal/structural behaviors, other than just being bounded/unbounded. And this should contribute to the development of new (declarative) constructs for process calculi, using a similar methodology adopted in the {\em op. cit.} works.
+
+
+This  can bring a fresh view to the {\em process-as-term interpretation}. We see the two approaches as complementary, offering alternative reasoning techniques, \eg, reachability via logical deduction in the former and type systems in the later. The interaction can shed new lights on how to give a computational meaning to the modalities in~\cite{DBLP:conf/lpar/LellmannOP17}.
+
+\subsection{Logical frameworks} 
+The notion of bipoles and  focusing 
+can be abstracted~\cite{daleSD17}, so not to depend on the chosen meta-language. We plan to use this generalisation in order to uniformly capture meta-invariants for object-properties. 
+%One such invariants is the duality appearing in the cut-elimination process.
+One way of determining such invariants is by using proof theoretical 
+techniques in order to tailor new systems to meet the behavior of
+well studied systems. 
+
+The proposal of {\em end-active} versions for nested systems in~\cite{DBLP:journals/tocl/LellmannP19} is a move in this direction since, for such systems, 
+the cut-elimination process is close to the sequent calculus one.
+This, together with the  relationship between internal and external calculi established in~\cite{DBLP:conf/wollic/Pimentel18,DBLP:conf/tableaux/PimentelRL19} should enable the bipoles-focusing approach for meta-level reasoning of harmonical properties in labeled/nested systems, as our preliminary results obtained in~\cite{DBLP:conf/lsfa/OlartePX20} suggest.
+
+Regarding the rewriting-logic approach, Gentzen-style  proofs of properties such as admissibility of rules, invertibility of rules and cut-elimination  require inductive reasoning over the provability relation, which is often quite elaborated, exponentially exhaustive, and error prone. In~\cite{DBLP:conf/wrla/OlartePR18,DBLP:journals/corr/abs-2101-03113}, we have showed that it is possible to use rewriting logic, and its implementation in Maude, to (semi-) automatically generate proofs of such properties for different systems including classical, intuitionistic, substructural and modal logics. 
+%
+
+{\bf Future Work.}
+Extend this framework to handle also nested and labelled sequent systems, thus widening the range of logics that can be analysed.  More interestingly, we conjecture that the already developed infrastructure can be used to provide semi-automatic procedures for the verification of properties of typing systems (\eg\ subject reduction, normalization and factorization~\cite{DBLP:conf/csl/AccattoliFG21}). For that, the representation of types and binders as a rewrite theory must be revisited (see \cite{DBLP:conf/birthday/StehrM04}). 
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{biblio} 
+
+
+\newpage
+
+\setcounter{mainpartbegin}{\thepage}
+\addtocounter{mainpartbegin}{-1}
+\fancyfoot[C]{Page \thepage~of \pageref{LastPage}. 
+\setcounter{mainpart}{\value{page}-\value{mainpartbegin}}%
+}
+
+\end{document}
+
