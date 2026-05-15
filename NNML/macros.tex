@@ -1,0 +1,333 @@
+% Propositional rules
+\newcommand{\lr}{\mf L}
+\newcommand{\rr}{\mf R}
+\newcommand{\lbot}{$\bot_\lr$}
+\newcommand{\rtop}{$\top_\rr$}
+\newcommand{\lto}{$\to_\lr$}
+\newcommand{\rto}{$\to_\rr$}
+\newcommand{\init}{$\mf{init}$}
+\newcommand{\lland}{$\land_\lr$}
+\newcommand{\rland}{$\land_\rr$}
+
+% Modal rules
+\newcommand{\lbox}{$\Box_\lr$}
+\newcommand{\rbox}{$\Box_\rr$}
+\newcommand{\rboxm}{${}_{\mathsf M}\Box_\rr$}
+
+
+%ANNOTATED RULES
+% Propositional rules
+\newcommand{\lrA}{\mf L}
+\newcommand{\rrA}{\mf R}
+\newcommand{\lbotA}{$\bot_\lr^{\annotated}$}
+\newcommand{\rtopA}{$\top_\rr^{\annotated}$}
+\newcommand{\ltoA}{$\to_\lr^{\annotated}$}
+\newcommand{\rtoA}{$\to_\rr^{\annotated}$}
+\newcommand{\initA}{$\mf{init}^{\annotated}$}
+
+% Modal rules
+\newcommand{\lboxA}{$\Box_\lr^{\annotated}$}
+\newcommand{\rboxA}{$\Box_\rr^{\annotated}$}
+\newcommand{\rboxmA}{${}_{\mathsf M}\Box_\rr^{\annotated}$}
+\newcommand{\rulenA}{$\mf N^{\annotated}$}
+\newcommand{\rulecA}{$\mf C^{\annotated}$}
+
+
+\newcommand{\rboxc}{$\Box_\textup{R}^\textup{C}$}
+\newcommand{\rulen}{$\mf N$}
+\newcommand{\rulem}{$\Box_\textup{R}^\textup{M}$}
+\newcommand{\rboxmc}{$\Box_\textup{R}^\textup{MC}$}
+\newcommand{\rulec}{$\mf C$}
+\newcommand{\rulep}{$\mf P$}
+\newcommand{\rulet}{$\mf T$}
+\newcommand{\ruled}{$\mf D$}
+\newcommand{\ruledm}{$\mf D_{\mathsf M}$}
+\newcommand{\ruledaux}{$\mf D_{\mathsf{aux}}$}
+
+
+\newcommand{\mc}{\mathcal}
+\newcommand{\mf}{\mathsf}
+\newcommand{\tbf}{\textbf}
+\newcommand{\mbf}{\mathbf}
+
+% classical non-normal modal logics
+\newcommand{\Logic}{$\mathbf{L}$}
+\newcommand{\Logicstar}{$\mathbf{L^{\star}}$} 
+\newcommand{\Estar}{$\mathbf{E^{\star}}$}  
+\newcommand{\E}{$\mathbf{E}$}
+\newcommand{\EM}{$\mathbf{M}$}
+\newcommand{\EN}{$\mathbf{EN}$}
+\newcommand{\EC}{$\mathbf{EC}$}
+\newcommand{\EMN}{$\mathbf{MN}$}
+\newcommand{\ECN}{$\mathbf{ECN}$}
+\newcommand{\EMC}{$\mathbf{MC}$}
+\newcommand{\EMCN}{$\mathbf{MCN}$}
+
+\newcommand{\K}{$\mathbf{K}$}
+
+\newcommand{\EMD}{$\mathbf{MD}$}
+\newcommand{\Eextstar}{$\mathbf{E(T/P/D)^{\star}}$}  
+
+\newcommand{\CPL}{$\mathbf{PL}$}
+
+
+\newcommand{\mathET}{\mathbf{ET}}
+\newcommand{\mathEMD}{\mathbf{MD}}
+\newcommand{\mathEND}{\mathbf{END}}
+\newcommand{\mathECP}{\mathbf{ECP}}
+
+
+
+% Axioms
+\newcommand{\axMdiam}{$\mathsf M_\Diamond$}
+\newcommand{\axCdiam}{$\mathsf C_\Diamond$}
+\newcommand{\axNdiam}{$\mathsf N_\Diamond$}
+\newcommand{\axMbox}{$\mathsf M_\Box$}
+\newcommand{\axCbox}{$\mathsf C_\Box$}
+\newcommand{\axNbox}{$\mathsf N_\Box$}
+\newcommand{\dualbox}{$\mathsf{Dual_\Box}$}
+\newcommand{\dualdiam}{$\mathsf{Dual_\Diamond}$}
+\newcommand{\axKdiam}{$\mathsf K_\Diamond$}
+\newcommand{\MP}{$\mathsf{MP}$}
+
+
+
+%rules names
+\newcommand{\rebox}{$\mathsf{RE_\Box}$}
+\newcommand{\rediam}{$\mathsf{RE_\Diamond}$}
+\newcommand{\rmbox}{$\mathsf{RM_\Box}$}
+\newcommand{\rmdiam}{$\mathsf{RM_\Diamond}$}
+\newcommand{\rulenbox}{$\mathsf{RN_\Box}$}
+\newcommand{\rulendiam}{$\mathsf{RN_\Diamond}$}
+
+
+\newcommand{\ax}{\AxiomC}
+\newcommand{\uinf}{\UnaryInfC}
+\newcommand{\binf}{\BinaryInfC}
+\newcommand{\llab}{\LeftLabel}
+\newcommand{\rlab}{\RightLabel}
+\newcommand{\disp}{\DisplayProof}
+%\newcommand{\seq}{\vdash}
+\newcommand{\seq}{\Rightarrow}
+%\newcommand{\hyp}{\parallel}
+\newcommand{\hyp}{\mid}
+\newcommand{\G}{\Gamma}
+\newcommand{\D}{\Delta}
+%\newcommand{\boxes}{\langle\Lambda\rangle}
+\newcommand{\boxes}{\Lambda^{\langle \rangle}}
+%\newcommand{\boxes}{{}_{\langle \rangle}\Lambda}
+%\newcommand{\hG}{\mathfrak G}
+%\newcommand{\hD}{\mathfrak D}
+%\newcommand{\hG}{\mathcal G}
+%\newcommand{\hD}{\mathcal D}
+\newcommand{\hG}{G}
+\newcommand{\hD}{D}
+\newcommand{\hH}{H}
+
+
+
+
+
+
+
+%Model
+\newcommand{\Pow}{\mc P}
+\newcommand{\M}{\mc M}
+\newcommand{\Ms}{\mc M_s}
+\newcommand{\N}{\mc N}
+\newcommand{\Ns}{\mc N_s}
+\newcommand{\Nb}{\mc N_b}
+\newcommand{\W}{\mc W}
+\newcommand{\V}{\mc V}
+%\newcommand{\mod}{\models}
+\newcommand{\Vd}{\Vdash}
+\newcommand{\vd}{\vdash}
+\newcommand{\B}{\mc B}
+\newcommand{\C}{\mc C}
+
+\newcommand{\Der}{\mathcal D}
+\newcommand{\DerA}{\mathcal D^*}
+
+\newcommand{\lan}{\mc L}
+\newcommand{\atm}{\mf{Atm}}
+\newcommand{\s}{\mc S}
+
+%\newcommand{\tsets}[1]{[#1]_{\M}^s}
+%\newcommand{\tsetb}[1]{[#1]_{\M}^b}
+\newcommand{\tsets}[1]{[#1]_{\M}}
+\newcommand{\tsetb}[1]{[#1]_{\M}}
+
+% Annotated calculus
+\newcommand{\AB}{\mathcal A}
+%\newcommand{\AB}{\mathsf{A}_{\B}}
+%\newcommand{\AB}{\mathsf{A}}
+\newcommand{\annotation}{(\aw, \af, \apol)}
+\newcommand{\inann}{(x_0, \epsilon, \epsilon)}
+\newcommand{\inannone}{(x_1, \epsilon, \epsilon)}
+\newcommand{\inannn}{(x_n, \epsilon, \epsilon)}
+%\newcommand{\annotated}{\A}
+\newcommand{\annotated}{*}
+\newcommand{\aw}{x}
+\newcommand{\af}{\phi}
+\newcommand{\apol}{\circ}
+\newcommand{\roothyp}{\G_1 \seq^{\inannone} \D_1 \hyp ... \hyp \G_n \seq^{\inannn} \D_n}
+
+%
+\newcommand{\HL}{$\mc H_{\mathsf L}$}
+\newcommand{\HE}{$\mc H_{\mathsf E}$}
+\newcommand{\HM}{$\mc H_{\mathsf M}$}
+\newcommand{\HEC}{$\mc H_{\mathsf{EC}}$}
+\newcommand{\HMC}{$\mc H_{\mathsf{MC}}$}
+\newcommand{\HEN}{$\mc H_{\mathsf{EN}}$}
+\newcommand{\HMN}{$\mc H_{\mathsf{MN}}$}
+\newcommand{\HECN}{$\mc H_{\mathsf{ECN}}$}
+\newcommand{\HMCN}{$\mc H_{\mathsf{MCN}}$}
+%\newcommand{\HEMCN}{$\mc H_{\mathsf{E(M,C,N)}}$}
+\newcommand{\HEMCN}{$\mc H_{\mathsf{E(M/C/N)}}$}
+\newcommand{\HEMCNext}{$\mc H_{\mathsf{E(M/C/N/T/P/D)}}$}
+
+\newcommand{\HEstar}{$\mc H_{\mathsf E^{\star}}$}
+\newcommand{\HMstar}{$\mc H_{\mathsf M^{\star}}$}
+\newcommand{\HENstar}{$\mc H_{\mathsf{EN}^{\star}}$}
+\newcommand{\HECstar}{$\mc H_{\mathsf{EC}^{\star}}$}
+\newcommand{\HEextstar}{$\mc H_{\mathsf{E(T/P/D)}^{\star}}$}
+
+\newcommand{\aHE}{$\mc H_{\mathsf E}^{*}$}
+\newcommand{\aHM}{$\mc H_{\mathsf M}^{*}$}
+\newcommand{\aHEC}{$\mc H_{\mathsf{EC}}^{*}$}
+\newcommand{\aHMC}{$\mc H_{\mathsf{MC}}^{*}$}
+\newcommand{\aHEN}{$\mc H_{\mathsf{EN}}^{*}$}
+\newcommand{\aHMN}{$\mc H_{\mathsf{MN}}^{*}$}
+\newcommand{\aHECN}{$\mc H_{\mathsf{ECN}}^{*}$}
+\newcommand{\aHMCN}{$\mc H_{\mathsf{MCN}}^{*}$}
+\newcommand{\aHEMCN}{$\mc H_{\mathsf{E(M,C,N)}}^{*}$}
+
+\newcommand{\aHEstar}{$\mc H_{\mathsf E^{\star}}^{*}$}
+\newcommand{\aHMstar}{$\mc H_{\mathsf M^{\star}}^{*}$}
+\newcommand{\aHENstar}{$\mc H_{\mathsf{EN}^{\star}}^{*}$}
+\newcommand{\aHECstar}{$\mc H_{\mathsf{EC}^{\star}}^{*}$}
+
+
+\newcommand{\bH}{$H$$\downarrow$}
+
+
+% Hilbert Axioms
+\newcommand{\axM}{$\textup M$}
+\newcommand{\axN}{$\textup N$}
+\newcommand{\axC}{$\textup C$}
+\newcommand{\axK}{$\textup K$}
+\newcommand{\axP}{$\textup P$}
+\newcommand{\axD}{$\textup D$}
+\newcommand{\axT}{$\textup T$}
+\newcommand{\RE}{$\textup{RE}$}
+\newcommand{\RM}{$\textup{RM}$}
+\newcommand{\RN}{$\textup{RN}$}
+%\newcommand{\axM}{$\mf M$}
+%\newcommand{\axN}{$\mf N$}
+%\newcommand{\axC}{$\mf C$}
+%\newcommand{\axK}{$\mf K$}
+%\newcommand{\axP}{$\mf P$}
+%\newcommand{\axD}{$\mf D$}
+%\newcommand{\RE}{$\mf{RE}$}
+%\newcommand{\RM}{$\mf{RM}$}
+%\newcommand{\RN}{$\mf{RN}$}
+
+
+% B: Note you don't need those if you use the last command \str with an
+% argument :)  T: Thank you B. I read your comment too late. 
+\newcommand{\angA}{\langle A \rangle}
+\newcommand{\angB}{\langle B \rangle}
+\newcommand{\angC}{\langle C \rangle}
+\newcommand{\angtop}{\langle \top \rangle}
+\newcommand{\angSigma}{\langle \Sigma \rangle}
+\newcommand{\angPi}{\langle \Pi \rangle}
+\newcommand{\angLambda}{\langle \Lambda \rangle}
+\newcommand{\angTheta}{\langle \Theta \rangle}
+\newcommand{\angXi}{\langle \Xi \rangle}
+\newcommand{\angUpsilon}{\langle \Upsilon \rangle}
+\newcommand{\angOmega}{\langle \Omega \rangle}
+\newcommand{\angSigmaPi}{\langle \Sigma, \Pi \rangle}
+\newcommand{\str}[1]{\langle #1 \rangle}
+
+\newcommand{\set}[1]{\mathsf{set}(#1)}
+\newcommand{\HC}[1]{\mathcal{H}_{#1}}
+\newcommand{\logic}{\mathbf{L}}
+
+% Structural rules
+\newcommand{\wk}{$\mathsf{wk}$}
+\newcommand{\ctr}{$\mathsf{ctr}$}  
+\newcommand{\lwk}{$\mathsf{wk_\lr}$}
+\newcommand{\rwk}{$\mathsf{wk_\rr}$}
+\newcommand{\lctr}{$\mathsf{ctr_\lr}$}
+\newcommand{\rctr}{$\mathsf{ctr_\rr}$}
+%\newcommand{\angwk}{$\mathsf{wk_{<>}}$}  
+%\newcommand{\angctr}{$\mathsf{ctr_{<>}}$} 
+\newcommand{\angwk}{$\mathsf{wk_{\langle\rangle}}$}  
+\newcommand{\angctr}{$\mathsf{ctr_{\langle\rangle}}$} 
+
+
+\newcommand{\exex}{$\mathsf{ee}$}  
+\newcommand{\intctr}{$\mathsf{ctr}$}
+\newcommand{\exctr}{$\mathsf{ec}$}    
+\newcommand{\intwk}{$\mathsf{wk}$}
+\newcommand{\exwk}{$\mathsf{ew}$}
+\newcommand{\hypcut}{$\mathsf{cut}$}
+\newcommand{\subrule}{$\mathsf{sub}$}
+\newcommand{\subrulem}{$\mathsf{sub_M}$}
+\newcommand{\subruleaux}{$\mathsf{sub_{(M)}}$}
+
+\newcommand{\cllogic}{classical non-normal modal logic}
+\newcommand{\bin}{bi-neighbourhood}
+\newcommand{\nei}{neighbourhood}
+\newcommand{\Angle}{block}
+\newcommand{\AND}{\bigwedge}
+\newcommand{\OR}{\bigvee}
+\newcommand{\fint}{i}
+\newcommand{\w}{\mf w}
+\newcommand{\sbf}{\mf{sbf}}
+
+\newcommand{\nann}{\mathbf a}
+\newcommand{\nbl}{\mathbf b}
+\newcommand{\sizebl}{\mathbf{sb}}
+
+%%% SIDE COMMENTS ENVIRONMENT
+
+\newcommand{\nb}[1]{\textcolor{red}{$|$}\mbox{}\marginpar{\scriptsize\raggedright\textcolor{red}{#1}}}
+
+\newcommand{\hide}[1]{}
+
+% prints the text only in the appropriate version
+% requires etoolbox package
+\newcommand{\inVersion}[2]{\ifdefstring{\versionlength}{#1}{#2}{
+\ifdefstring{\versionlength}{all}{\noindent \textbf{In #1 Version: }
+  #2 \textbf{End of  #1 Version}\\}{}
+}}
+
+% General purpose macros
+\newcommand\eg{\hbox{\textit{e.g.}}}
+\newcommand\ie{\hbox{\textit{i.e.}}}
+\newcommand{\etal}{\emph{et al.}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+
+\newenvironment{proof-sketch}{\noindent{\em Sketch of Proof.}\hspace*{0.5em}}{\qed\medskip}%{\qed\medskip}%{\qed\bigskip}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+
+%TODO notes
+%\renewcommand{\note}[3]{\todo[size=\tiny,color=#1]{\texttt{\color{white} #2: #3}}}
+%\newcommand\co[1]{\note{orange}{CO}{#1}}
+%\newcommand\ep[1]{\note{blue}{EP}{#1}}
+%\newcommand\rl[1]{\note{green}{\color{black}RL}{\color{black}#1}}
+%\newcommand\review[1]{\note{yellow}{\color{black}}{\color{black}#1}}
+%\newcommand\reviewin[1]{\note{yellow,inline}{\color{black}}{\color{black}#1}}
+%\newcommand\warning[1]{\note{red}{ACHTUNG!}{#1}}
+
+%%% 
